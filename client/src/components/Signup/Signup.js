@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import API from '../../utils/API';
+import {Card , Button , TextField  } from '@material-ui/core';
 
 export class Signup extends React.Component {
     constructor(props) {
@@ -37,22 +38,57 @@ export class Signup extends React.Component {
             [event.target.id]: event.target.value
         });
     }
+    redirectToTarget = () => {
+        this.props.history.push(`/`)
+    }
     render() {
+        const styles = {
+            card: {
+              maxWidth: 345,
+              margin: 'auto',
+              padding: 40,
+            },
+            media: {
+              // ⚠️ object-fit is not supported by IE 11.
+              objectFit: 'cover',
+            },
+          };
         return(
-            <div className="Login">
-                <FormGroup controlId="email" bsSize="large">
-                <ControlLabel>Email</ControlLabel>
-                <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
+            <Card style={styles.card} className="signup">
+                <FormGroup controlId="email" bssize="large">
+                    <TextField
+                    id="email" 
+                    type="email" 
+                    label="Email"
+                    margin="normal" autoFocus
+                    value={this.state.email} onChange={this.handleChange}
+                    />
+                    <TextField
+                    id="password" 
+                    type="password" 
+                    label="Password"
+                    margin="normal" autoFocus
+                    value={this.state.password} onChange={this.handleChange}
+                    />
+                    <TextField
+                    id="cpassword" 
+                    type="password" 
+                    label="Confirm Password"
+                    margin="normal" autoFocus
+                    value={this.state.cpassword} onChange={this.handleChange}
+                    />
                 </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
+                {/* <FormGroup controlId="password" bsSize="large">
                 <ControlLabel>Password</ControlLabel>
                 <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
-                </FormGroup>
-                <FormGroup controlId="cpassword" bsSize="large">
+                </FormGroup> */}
+                {/* <FormGroup controlId="cpassword" bsSize="large">
                 <ControlLabel>Confirm Password</ControlLabel>
                 <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
-                </FormGroup>
+                </FormGroup> */}
                 <Button
+                variant="contained"
+                color="primary" 
                 onClick={this.send}
                 block="true"
                 bsSize="large"
@@ -60,7 +96,9 @@ export class Signup extends React.Component {
                 >
                 Inscription
                 </Button>
-            </div>
+                <Button variant="contained" color="primary" onClick={this.redirectToTarget} className="">Login</Button>
+
+            </Card>
         )
     }
 }

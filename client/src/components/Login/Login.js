@@ -1,10 +1,9 @@
 import React from 'react';
 import {FormGroup,  FormControl, ControlLabel } from "react-bootstrap";
 import API from '../../utils/API';
-import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import {Button , TextField  } from '@material-ui/core';
+import {Card , Button , TextField  } from '@material-ui/core';
 import { BrowserRouter, Route } from 'react-router-dom'
 
 export class Login extends React.Component {
@@ -56,21 +55,20 @@ export class Login extends React.Component {
             <Card style={styles.card} className="loginCard">
                 <div className="Login">
                     <FormGroup controlId="email" bsSize="large">
-                    <TextField
-                    id="email" 
-                    type="email" 
-                    label="Email"
-                    margin="normal" autoFocus
-                    value={this.state.email} onChange={this.handleChange}
-                    />
-                    
-                    <TextField
-                    id="password" 
-                    type="password" 
-                    label="Password"
-                    margin="normal" autoFocus
-                    value={this.state.password} onChange={this.handleChange}
-                    />
+                        <TextField
+                        id="email" 
+                        type="email" 
+                        label="Email"
+                        margin="normal" autoFocus
+                        value={this.state.email} onChange={this.handleChange}
+                        />
+                        <TextField
+                        id="password" 
+                        type="password" 
+                        label="Password"
+                        margin="normal" autoFocus
+                        value={this.state.password} onChange={this.handleChange}
+                        />
                     </FormGroup>
                     <FormGroup controlId="password" bssize="large">
                     </FormGroup> 
