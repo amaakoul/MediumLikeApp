@@ -78,14 +78,6 @@ export class Signup extends React.Component {
                     value={this.state.cpassword} onChange={this.handleChange}
                     />
                 </FormGroup>
-                {/* <FormGroup controlId="password" bsSize="large">
-                <ControlLabel>Password</ControlLabel>
-                <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
-                </FormGroup> */}
-                {/* <FormGroup controlId="cpassword" bsSize="large">
-                <ControlLabel>Confirm Password</ControlLabel>
-                <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
-                </FormGroup> */}
                 <Button
                 variant="contained"
                 color="primary" 
