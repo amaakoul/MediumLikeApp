@@ -1,6 +1,11 @@
 import React from 'react';
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import {FormGroup,  FormControl, ControlLabel } from "react-bootstrap";
 import API from '../../utils/API';
+import Card from '@material-ui/core/Card';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import {Button , TextField  } from '@material-ui/core';
+import { BrowserRouter, Route } from 'react-router-dom'
 
 export class Login extends React.Component {
     constructor(props) {
@@ -32,26 +37,57 @@ export class Login extends React.Component {
             [event.target.id]: event.target.value
         });
     }
-    render() {
+    redirectToTarget = () => {
+        this.props.history.push(`/signup`)
+      }
+    render(){
+        const styles = {
+            card: {
+              maxWidth: 345,
+              margin: 'auto',
+              padding: 40,
+            },
+            media: {
+              // ⚠️ object-fit is not supported by IE 11.
+              objectFit: 'cover',
+            },
+          };
         return(
-            <div className="Login">
-                <FormGroup controlId="email" bsSize="large">
-                <ControlLabel>Email</ControlLabel>
-                <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                <ControlLabel>Password</ControlLabel>
-                <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
-                </FormGroup>
-                <Button
-                onClick={this.send}
-                block
-                bsSize="large"
-                type="submit"
-                >
-                Connexion
-                </Button>
-            </div>
+            <Card style={styles.card} className="loginCard">
+                <div className="Login">
+                    <FormGroup controlId="email" bsSize="large">
+                    <TextField
+                    id="email" 
+                    type="email" 
+                    label="Email"
+                    margin="normal" autoFocus
+                    value={this.state.email} onChange={this.handleChange}
+                    />
+                    
+                    <TextField
+                    id="password" 
+                    type="password" 
+                    label="Password"
+                    margin="normal" autoFocus
+                    value={this.state.password} onChange={this.handleChange}
+                    />
+                    </FormGroup>
+                    <FormGroup controlId="password" bssize="large">
+                    </FormGroup> 
+                    <Button variant="contained" color="primary" 
+                    onClick={this.send}
+                    block="true"
+                    bssize="large"
+                    type="submit"
+                    >
+                    Connexion
+                    </Button>
+                </div>
+                {/* <Route exact path ="/signup" component={Signup}/> */}
+                
+                <Button variant="contained" color="primary" onClick={this.redirectToTarget} className="">Signup</Button>
+            </Card>
+
         )
     }
 }

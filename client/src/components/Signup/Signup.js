@@ -54,7 +54,7 @@ export class Signup extends React.Component {
                 </FormGroup>
                 <Button
                 onClick={this.send}
-                block
+                block="true"
                 bsSize="large"
                 type="submit"
                 >
