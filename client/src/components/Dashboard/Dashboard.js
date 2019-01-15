@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button } from "react-bootstrap";
+import { Button } from '@material-ui/core';
 import API from '../../utils/API';
+import {Main} from '../NewsSection/NewsSection';
 
 export class Dashboard extends React.Component {
     constructor(props){
@@ -16,6 +17,7 @@ export class Dashboard extends React.Component {
             <div className="Dashboard">
                 <h1>Dashboard</h1>
                 <Button
+                variant="contained" color="secondary"
                 onClick={this.disconnect}
                 block
                 bsSize="large"
@@ -23,6 +25,8 @@ export class Dashboard extends React.Component {
                 >
                 Se déconnecter
                 </Button>
+                <Main className="news"/>
+
             </div>
         )
     }
